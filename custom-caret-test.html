@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Textarea Buttons</title>
+    <style>
+        /* Add some basic styling to make the buttons look decent */
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="add-textarea-btn">Add textarea</button>
+    <button id="remove-textarea-btn">Remove textarea</button>
+    <div id="app-container" style="position: relative;"></div>
+
+    <script src="custom.js"></script>
+
+    <script>
+        const addTextareaBtn = document.getElementById('add-textarea-btn');
+        const removeTextareaBtn = document.getElementById('remove-textarea-btn');
+        const textareaContainer = document.getElementById('app-container');
+
+        function addTextarea() {
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('block-editor');
+
+            const newTextarea = document.createElement('textarea');
+            newTextarea.classList.add('normal-block');
+
+            newTextarea.rows = 6;
+            newTextarea.cols = 40;
+            newTextarea.value = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ".repeat(3);
+            // disable spellcheck
+            newTextarea.spellcheck = false;
+            newDiv.appendChild(newTextarea);
+            textareaContainer.appendChild(newDiv);
+        }
+
+        function removeTextarea() {
+            const textareas = textareaContainer.children;
+            if (textareas.length > 0) {
+                textareaContainer.removeChild(textareas[textareas.length - 1]);
+            }
+        }
+
+        addTextareaBtn.addEventListener('click', addTextarea);
+        removeTextareaBtn.addEventListener('click', removeTextarea);
+    </script>
+
+
+
+</body>
+
+</html>
