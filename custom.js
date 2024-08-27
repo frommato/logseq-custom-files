@@ -191,7 +191,7 @@ getCaretCoordinates = function (element, position) {
     // The  *only* reliable way to do that is to copy the *entire* rest of the
     // textarea's content into the <span> created at the caret position.
     // for inputs, just '.' would be enough, but why bother?
-    span.textContent = element.value.substring(position) || '.';  // || because a completely empty faux span doesn't render at all
+    span.textContent = element.value.substring(position) || "\u200B";  // || because a completely empty faux span doesn't render at all
     span.style.backgroundColor = "lightgrey";
     mirrorDiv.appendChild(span);
 
